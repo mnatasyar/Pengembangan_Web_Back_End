@@ -1,0 +1,17 @@
+<html>
+    <head>
+        <title>Praktek Minggu 1</title>
+    </head>
+    <body>
+        <input type="email" id="user_email" placeholder="name@example.com">
+        <button id="notif">Get Notification</button>
+
+        <script>
+            let notif = document.getElementById("notif")
+            notif.onclick = function(){
+                let user_email = document.getElementById("user_email").value
+                alert("Kami akan memberikan notifikasi ke "+user_email+". Terima kasih") 
+            }
+        </script>
+    </body>
+</html>
