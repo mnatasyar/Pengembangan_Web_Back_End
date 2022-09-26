@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMI</title>
+    <style>
+        body {
+            margin: 0;
+            background-color: #3063BE;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+        .container {
+            width: 400px;
+            height: 450px;
+            margin: 40px auto;
+            padding: 15px;
+            background-color: white;
+            border-radius: 15px;
+        }
+        h1 {
+            text-align: center;
+        }
+        input[type=number]{
+            width: 17em;
+            padding: 4px;
+            border-width: 3px;
+            border-color: #3063BE;
+            font-weight: bold;
+        }
+        button {
+            margin: 20px 0;
+            margin-bottom: -10px;
+            background-color: #3063BE;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+        }
+        #bmi {
+            font-weight: bold;
+        }
+        #kategori {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>BMI Calculator</h1>
+        <hr>
+
+        <table cellpadding="10">
+            <tr>
+                <td>Berat Badan</td>
+                <td><input type="number" id="bb"></td>
+            </tr>
+            <tr>
+                <td>Tinggi Badan</td>
+                <td><input type="number" id="tb"></td>
+            </tr>
+            <tr>
+                <td>
+                    <button onclick="myHitung()">Hitung</button>
+                </td>
+            </tr>
+        </table>
+
+        <div class="hasil">
+            <p>
+                BMI 
+                <br>
+                <br>
+                <span id="bmi"></span>
+            </p>
+            <p>
+                Kategori
+                <br>
+                <br>
+                <span id="kategori"></span>
+            </p>
+        </div>
+    </div>
+
+    <script>
+        function myHitung() {
+            let berat = document.querySelector('#bb').value;
+            let tinggi = document.querySelector('#tb').value;
+
+            let bmiHasil = berat / (tinggi * tinggi)
+
+            if (bmiHasil < 15){
+                kat = "Berat badan sangat kurang"
+            }
+            else if (bmiHasil <= 18.49){
+                kat = "Berat badan kurang (underweight)"
+            }
+            else if (bmiHasil <= 23.99){
+                kat = "Normal"
+            }
+            else if (bmiHasil <= 29){
+                kat = "Kelebihan berat badan (overweight)"
+            }
+            else{
+                kat = "Obesitas (Diet Banh udh kegendutan)"
+            }
+            bmi.innerHTML = bmiHasil.toFixed(3)
+            kategori.innerHTML = kat
+        }
+    </script>
+</body>
+</html>
