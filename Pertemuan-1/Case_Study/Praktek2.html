@@ -3,10 +3,21 @@
         <title>Praktek Minggu 1</title>
     </head>
     <body>
+        <h1>Punny World</h1>
+        <br>
+        <p>Website akan diakses lengkap</p>
+        <table>
+            <th><p>Pada :</p><th>
+            <td><p id="now"></p></td>
+        </table>
         <input type="email" id="user_email" placeholder="name@example.com">
         <button id="notif">Get Notification</button>
 
         <script>
+            let tanggal_hari_ini = new Date(Date.now()),
+            now =document.getElementById("now")
+            now.innerHTML = tanggal_hari_ini.toLocaleDateString()
+            
             let notif = document.getElementById("notif")
             notif.onclick = function(){
                 let user_email = document.getElementById("user_email").value
