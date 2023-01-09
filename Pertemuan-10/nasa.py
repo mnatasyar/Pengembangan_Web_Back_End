@@ -4,6 +4,11 @@ class absHasil(ABC):
     @abstractmethod
     def hasil():
         pass
+    
+class AbsHasil(ABC):
+    @abstractmethod
+    def hasil():
+        pass
 
 class Mahasiswa(absHasil):
     banyakMahasiswa = 0
@@ -24,10 +29,10 @@ class Mahasiswa(absHasil):
         print(f"No. HP = {self.noHp}")
         print("-------------------\n")
 
-class Dosen(absHasil):
+class Dosen(AbsHasil):
     banyakDosen = 0
     def __init__(self, nip, nama, jabatan, jenisKelamin, noHp):
-        self.nim = nip
+        self.nip = nip
         self.nama = nama
         self.jabatan = jabatan
         self.jenisKelamin = jenisKelamin
@@ -51,3 +56,7 @@ if __name__ == "__main__":
     cetakMhs = Mahasiswa("211111999", "Kaori Miyazono", "Manajemen", "Wanita", "Udh Meninggal")
     for proses in absHasil.__subclasses__():
         proses.hasil(cetakMhs)
+        
+    cetakDsn = Dosen("1234567", "Saya Sendiri", "Dosen Tetap", "Pria", "0812345678")
+    for cetak in AbsHasil.__subclasses__():
+        cetak.hasil(cetakDsn)
