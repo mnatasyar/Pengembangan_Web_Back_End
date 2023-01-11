@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>REST API - MVC</title>
+  <link rel="stylesheet" href="https://www.unpkg.com/bulma@0.9.3/css/bulma.css">
+</head>
+
+<body>
+  <div id="app" class="container is-max-desktop mt-5">
+    <h1 class="title">Edit Product</h1>
+    <div class="field"><label class="label">Product Name</label>
+      <div class="control"><input type="text" placeholder="Product Name" class="input" name="name" id="name"
+          value="<%=product.name %>"></div>
+    </div>
+    <div class="field"><label class="label">Product Price</label>
+      <div class="control"><input type="text" placeholder="Product Price" class="input" name="price" id="price"
+          value=<%=product.price %> ></div>
+    </div>
+    <div class="control">
+      <button class="button is-warning" id="save" onclick=<%="edit(" + product.id+ ")" %> > UPDATE</button>
+    </div>
+  </div>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script>
+    const edit = (id) => {
+      axios({
+        method: 'put', url: '/api/product/' + id, data: {
+          name: document.getElementById("name").value, price: document.getElementById("price").value
+        }
+      }).then((result) => {
+        alert('Info status: ' + result.status)
+        window.location = "/";
+      }).catch((err) => {
+        alert('error ' + err)
+      });
+    }
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>REST API - MVC</title>
+  <link rel="stylesheet" href="https://www.unpkg.com/bulma@0.9.3/css/bulma.css">
+</head>
+
+<body>
+  <header>
+    <nav class="navbar is-info" role="navigation" aria-label="main navigation">
+      <div class="navbar-brand">
+        <a class="navbar-item" href="/">
+          Bunny Web
+        </a>
+        <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
+      </div>
+      <div class="navbar-menu">
+        <div class="navbar-end">
+          <div class="navbar-item">
+            <div class="mx-3">
+              <%= user.email %>
+            </div>
+            <div class="buttons">
+              <%- (!user?'<a href="/login" class="button is-light">Login</a>':'<a href="/logout"
+                  class="button is-light">Logout</a>') %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+  <div id="app" class="container is-max-desktop">
+    <h1 class="title mt-5"> List of Product</h1>
+    <div>
+      <a href="/create" class="button is-success" style="margin-top: 10px;">Add
+        New</a>
+      <table class="table is-striped is-bordered mt-3 is-fullwidth" style="margin:
+      10px auto;">
+        <thead>
+          <tr>
+            <th>Product Name</th>
+            <th>Product Price</th>
+            <th class="has-text-centered">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% products.forEach(el=> { %>
+            <tr>
+              <td>
+                <%= el.name %>
+              </td>
+              <td>
+                <%= el.price %>
+              </td>
+              <td class="has-text-centered">
+                <a href="/edit/<%= el.id %>" class="button is-warning is-small">Edit</a>
+                <button onclick=<%='del(' +el.id+')' %> class="button is- danger is-small" style="margin-left:
+                  5px;">Delete</a>
+              </td>
+            </tr>
+            <% }) %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script>
+    let del = (id) => {
+      axios.delete('/api/product/' + id).then((result) => {
+        alert('Info status: ' + result.status)
+        location.reload();
+      }).catch((err) => {
+        alert('error ' + err)
+      });
+    }
+  </script>
+</body>
+
+</html>
