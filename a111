@@ -1,0 +1,89 @@
+#Menggunakan Prinsip  LID
+
+from abc import ABC, abstractmethod
+
+class Mahasiswa(ABC):
+    @abstractmethod
+    def cetakMhs():
+        pass
+
+class Dosen(ABC):
+    @abstractmethod
+    def cetakDosen():
+        pass
+    
+class CetakNama(Mahasiswa, Dosen):
+    def cetakMhs(Data):
+        print(f"Nama Mahasiswa : {Data.nama}")
+           
+    def cetakDosen(Data1):
+        print(f"Nama Dosen : {Data1.nama}")
+
+class CetakNim(Mahasiswa, Dosen):
+    def cetakMhs(Data):
+        print(f"Nim Mahasiswa : {Data.nim}")
+    
+    def cetakDosen(Data):
+        print(f"Nip Dosen  : {Data.nip}")
+
+# class CetakKelas(Mahasiswa):
+#     def cetakMhs(Data):
+#         print(f"Kelas Mahasiswa : {Data.kelas}")
+
+# class CetakJabatan(Dosen):
+#     def cetakDosen(Data):
+#         print(f"Jabatan Sebagai  :  {Data.jabatan}")
+
+# class CetakNoHp(Mahasiswa):
+#     def cetakMhs(Data):
+#         print(f"Nomor Hp Mahasiswa : {Data.noHp}")
+
+# class CetakNoHpDosen(Dosen): 
+#     def cetakDosen(Data):
+#         print(f"Nomor Hp Dosen : {Data.noHp}")
+
+class DataMahasiswa:
+    def __init__(self, nama, nim):
+        self.nama = nama
+        self.nim  = nim
+        # self.kelas = kelas
+        # self.noHp = noHp
+
+
+class DataDosen:
+    def __init__(self, nama, nip):
+        self.nama = nama
+        self.nip = nip
+        # self.jabatan = jabatan
+        # self.noHp = noHp
+
+if __name__ == "__main__":
+    b = []
+    data1 = DataMahasiswa("Alvin", "211110558")
+    data2 = DataDosen("Albert", "133766")
+    b.append(data1)
+    b.append(data2)
+    
+    for cetak in Mahasiswa.__subclasses__():
+        cetak.cetakMhs(data1)
+    print()
+    
+    for cetak in Dosen.__subclasses__():
+        cetak.cetakDosen(data2)
+    print()
+    
+    
+    # for data in b:
+    #     for proses in Mahasiswa and Dosen.__subclasses__():
+    #         try:
+    #             proses.cetakMhs(data)
+    #         except:
+    #             continue
+    #     print()
+        
+    # print(len(b))
+    
+    
+
+
+
