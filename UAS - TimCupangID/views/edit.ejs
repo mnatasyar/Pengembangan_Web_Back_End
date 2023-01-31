@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EDIT Suppliers</title>
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="https://www.unpkg.com/bulma@0.9.3/css/bulma.css">
+</head>
+<body>
+    <nav class="navbar">
+        <a href="#" class="navbar-logo">Genshin Nolep</a>
+
+        <div class="navbar-nav">
+            <a href="/">HomePage</a>
+            <a href="/weaponlist">Weapon List</a>
+            <a href="/livechat">Spiral</a>
+        </div>
+
+        <div class="navbar-extra">
+            <a href="#" id="search"><i data-feather="search"></i></a>
+            <a href="#" id="shopping-cart"><i data-feather="shopping-cart"></i></a>
+            <a href="#" id="hamburger-menu"><i data-feather="menu"></i></a>
+        </div>
+    </nav>
+    <div id="app" class="container is-max-desktop mt-5">
+        <h1 class="title">Edit Item</h1>
+        <div class="field">
+            <label class="label">Icon Link</label>
+            <div class="control">
+                <input type="text" placeholder="Icon Link" class="input" name="icon" id="icon" value="<%=genshin.icon %>" autofocus>
+            </div>
+        </div>
+        <div class="field">
+            <label class="label">Item Name</label>
+            <div class="control">
+                <input type="text" placeholder="Item Name" class="input" name="name" value="<%=genshin.name %>" id="name">
+            </div>
+        </div>
+        <div class="field">
+            <label class="label">Weapon Type</label>
+            <div class="control">
+                <input type="text" placeholder="Weapon Type" class="input" name="weapontype" value="<%=genshin.weapontype %>" id="weapontype">
+            </div>
+        </div>
+        <div class="field">
+            <label class="label">Base ATK</label>
+            <div class="control">
+                <input type="text" placeholder="Base ATK" class="input" name="base" id="base" value="<%=genshin.base %>">
+            </div>
+        </div>
+        <div class="field">
+            <label class="label">Sub Stat</label>
+            <div class="control">
+                <input type="text" placeholder="Sub Stat" class="input" name="substat" id="substat" value="<%=genshin.substat %>">
+            </div>
+        </div>
+        <div class="control">
+            <a href="/" class="button is-danger" style="margin-right:10px">Cancel</a>
+            <button class="button is-warning" id="save" onclick=<%="edit(" +genshin.id+ ")" %> >UPDATE</button>
+        </div>
+    </div>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script>
+        const edit = (id) => {
+            axios({
+                method: 'put', 
+                url: '/api/genshin/' + id, 
+                data: {
+                    icon : document.getElementById("icon").value.trim(), 
+                    name  : document.getElementById("name").value.trim(),
+                    weapontype : document.getElementById("weapontype").value.trim(),
+                    base : document.getElementById("base").value.trim(),
+                    substat : document.getElementById("substat").value.trim()
+                }
+            }).then((result) => {
+                // sama kek syaratSupplier di index.js
+                if (document.getElementById("icon").value.trim() == "" || document.getElementById("name").value.trim() == "" || document.getElementById("base").value.trim() == "" || document.getElementById("substat").value.trim() == "" ||document.getElementById("weapontype").value.trim() == "" ) {
+                    alert('Info status: Data GAGAL diedit')
+                }
+                else {
+                    alert('Info status: ' + result.status)
+                }
+                window.location = "/";
+            }).catch((err) => {
+                alert('error ' + err)
+            });
+        }
+    </script>
+</body>
+</html>

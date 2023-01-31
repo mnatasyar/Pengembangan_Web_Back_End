@@ -1,0 +1,70 @@
+html {
+    background-image: url(https://wallpapercave.com/wp/wp7486978.jpg);
+    background-attachment: fixed;
+}
+.container {
+    background-color: azure;
+    padding: 45px;
+    border-radius: 5px;
+}
+th {
+    background-color: antiquewhite;
+    border-radius: 5px;
+}
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.4rem 7%;
+    background-color: rgb(240, 103, 24);
+    border-bottom: 1px solid #b6895b;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 9999;
+}
+  
+.navbar .navbar-logo {
+    font-size: 2rem;
+    font-weight: 700;
+    color: rgb(0, 0, 0);
+    font-style: italic;
+}
+  
+.navbar .navbar-logo span {
+    color: #b6895b;
+}
+  
+.navbar .navbar-nav a {
+    color: rgb(0, 0, 0);
+    display: inline-block;
+    font-size: 1, 4rem;
+    margin: 0 1rem;
+}
+  
+.navbar .navbar-nav a:hover {
+    color: #b6895b;
+}
+  
+.navbar .navbar-nav a::after {
+    content: "";
+    display: block;
+    padding-bottom: 0.5rem;
+    border-bottom: 0.5rem solid #b6895b;
+    transform: scale(0);
+    transition: 0.2s linear;
+}
+  
+.navbar .navbar-nav a:hover::after {
+    transform: scaleX(1);
+}
+  
+.navbar .navbar-extra a {
+    color: rgb(0, 0, 0);
+    margin: 0 0.5rem;
+}
+  
+.navbar .navbar-extra a:hover {
+    color: #b6895b;
+}

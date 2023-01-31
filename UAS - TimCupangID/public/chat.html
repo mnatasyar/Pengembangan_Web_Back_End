@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css"
+        integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="css/style.css" />
+    <title>Real Time Communication</title>
+</head>
+
+<body style="background: rgb(54, 184, 228)">
+    <nav class="navbar">
+        <a href="#" class="navbar-logo">Genshin Nolep</a>
+
+        <div class="navbar-nav">
+            <a href="/">HomePage</a>
+            <a href="/weaponlist">Weapon List</a>
+            <a href="/livechat">Spiral</a>
+        </div>
+
+        <div class="navbar-extra">
+            <a href="#" id="search"><i data-feather="search"></i></a>
+            <a href="#" id="shopping-cart"><i data-feather="shopping-cart"></i></a>
+            <a href="#" id="hamburger-menu"><i data-feather="menu"></i></a>
+        </div>
+    </nav>
+    <div class="chat-container">
+        <header class="chat-header">
+            <h1> Genshin Nolep forum</h1>
+            <a href="index.html" class="btn">Leave Forum</a>
+        </header>
+        <main class="chat-main">
+            <div class="chat-sidebar">
+                <h3><i class="fas fa-comments"></i> Forum</h3>
+                <h2 id="room-name"></h2>
+                <h3><i class="fas fa-users"></i> Traveler</h3>
+                <ul id="users"></ul>
+            </div>
+            <div class="chat-messages"></div>
+        </main>
+        <div class="chat-form-container">
+            <form id="chat-form">
+                <input id="msg" type="text" placeholder="Enter Message" required autocomplete="off" />
+                <button class="btn"><i class="fas fa-paper-plane"></i> Send</button>
+            </form>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qs/6.9.2/qs.min.js"
+        integrity="sha256-TDxXjkAUay70ae/QJBEpGKkpVslXaHHayklIVglFRT4=" crossorigin="anonymous"></script>
+    <!-- <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/qs/6.6.0/qs.min.js"></script> -->
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>

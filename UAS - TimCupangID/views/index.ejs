@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Genshin Impact - Weapon Top Tier List</title>
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="./style/index.css">
+    <link rel="stylesheet" href="https://www.unpkg.com/bulma@0.9.3/css/bulma.css">
+</head>
+<body>
+    <nav class="navbar">
+        <a href="#" class="navbar-logo">Genshin Nolep</a>
+
+        <div class="navbar-nav">
+            <a href="/">HomePage</a>
+            <a href="/weaponlist">Weapon List</a>
+            <a href="/livechat">Spiral</a>
+        </div>
+
+        <div class="navbar-extra">
+            <a href="#" id="search"><i data-feather="search"></i></a>
+            <a href="#" id="shopping-cart"><i data-feather="shopping-cart"></i></a>
+            <a href="#" id="hamburger-menu"><i data-feather="menu"></i></a>
+        </div>
+    </nav>
+    <div id="app" class="container mt-5">
+        <div class="parentgrid">
+            <div class="div1grid"> 
+                <img src="https://upload.wikimedia.org/wikipedia/en/thumb/5/5d/Genshin_Impact_logo.svg/2560px-Genshin_Impact_logo.svg.png">
+            </div>
+            <div class="div2grid"> 
+                <h1 class="title">Top Tier Weapon List</h1>
+            </div>
+            <div class="div3grid"> 
+                Swords - Polearms - Catalysts - Claymores - Bows
+            </div>
+            </div>
+        <div class="main-content">
+            <a href="/create" class="button is-success mt-3">Add New</a>
+            <table class="table is-striped is-bordered mt-3 is-fullwidth" style="margin:10px auto;">
+                <thead>
+                    <tr class="has-text-centered" style="border: 3px solid #c7bfb7;">
+                        <th>Icon Link</th>
+                        <th>Item Name</th>
+                        <th>Weapon Type</th>
+                        <th>Base ATK</th>
+                        <th>Sub Stat</th>
+                        <th class="has-text-centered">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% genshins.forEach(el=> { %>
+                        <tr style="border: 3px solid #c7bfb7;">
+                            <td class="has-text-centered"><img src="<%= el.icon %>" width="150px" height="150 px"> </td>
+                            <td><%= el.name %></td>
+                            <td><%= el.weapontype %></td>
+                            <td><%= el.base %></td>
+                            <td><%= el.substat %></td>
+                            <td class="has-text-centered">
+                                <a href="/edit/<%= el.id %>" class="button is-warning is-small">Edit</a>
+                                <button onclick=<%='del(' +el.id+ ')' %> class="button is-danger is-small" style="margin-left: 5px;">Delete</a>
+                            </td>
+                        </tr>
+                    <% }) %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script>
+        let del = (id) => {
+            axios.delete('/api/genshin/' + id).then((result) => {
+                alert('Info status: ' + result.status)
+                location.reload();
+            }).catch((err) => {
+                alert('error ' + err)
+            });
+        }
+    </script>
+</body>
+</html>

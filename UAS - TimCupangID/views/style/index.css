@@ -1,0 +1,30 @@
+.parentgrid {
+    display: grid;
+    grid-template-columns: 250px 1fr;
+    grid-template-rows: repeat(2, 50px);
+    grid-column-gap: 20px;
+    grid-row-gap: 0px;
+} 
+.div1grid { grid-area: 1 / 1 / 3 / 2; }
+.div2grid { 
+    grid-area: 1 / 2 / 2 / 3;
+    padding-top: 15px;
+ }
+.div3grid { 
+    grid-area: 2 / 2 / 3 / 3;
+    font-weight: 700;
+    padding-left: 2px;
+}
+.main-content{
+    border-top: 5px solid black;
+    border-radius: 5px;
+    margin-top: 5px;
+}
+.noteforrewind {
+    color: #696969;
+    opacity: 75%;
+}
+.table {
+    border-collapse: collapse;
+}
+

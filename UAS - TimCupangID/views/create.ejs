@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create new item</title>
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="https://www.unpkg.com/bulma@0.9.3/css/bulma.css">
+</head>
+<body>
+    <nav class="navbar">
+        <a href="#" class="navbar-logo">Genshin Nolep</a>
+
+        <div class="navbar-nav">
+            <a href="/">HomePage</a>
+            <a href="/weaponlist">Weapon List</a>
+            <a href="/livechat">Spiral</a>
+        </div>
+
+        <div class="navbar-extra">
+            <a href="#" id="search"><i data-feather="search"></i></a>
+            <a href="#" id="shopping-cart"><i data-feather="shopping-cart"></i></a>
+            <a href="#" id="hamburger-menu"><i data-feather="menu"></i></a>
+        </div>
+    </nav>
+    <div id="app" class="container is-max-desktop mt-5">
+        <h1 class="title">Add Item</h1>
+        <div class="field">
+            <label class="label">Icon Link</label>
+            <div class="control">
+                <input type="text" placeholder="Icon Link" class="input" name="icon" id="icon" autofocus>
+                <p class="noteforrewind">
+                    Example : ( https://genshin.honeyhunterworld.com/img/xxxx ), etc
+                    <br/>
+                    Note : Mungkin beberapa link tidak valid dan usahakan melakukan pengecekan ulang.
+                </p>
+            </div>
+        </div>
+        <div class="field">
+            <label class="label">Item Name</label>
+            <div class="control">
+                <input type="text" placeholder="Item Name" class="input" name="name" id="name">
+            </div>
+        </div>
+        <div class="field">
+            <label class="label">Weapon Type</label>
+            <div class="control">
+                <input type="text" placeholder="Weapon Type" class="input" name="weapontype" id="weapontype">
+            </div>
+        </div>
+        <div class="field">
+            <label class="label">Base ATK</label>
+            <div class="control">
+                <input type="text" placeholder="Base ATK" class="input" name="base" id="base">
+            </div>
+        </div>
+        <div class="field">
+            <label class="label">Sub Stat</label>
+            <div class="control">
+                <input type="text" placeholder="Sub Stat" class="input" name="substat" id="substat">
+            </div>
+        </div>
+        <div class="control">
+            <button class="button is-success" id="save">SAVE</button>
+        </div>
+    </div>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script>
+        const date = new Date().toLocaleString().replace(',','');
+        document.getElementById('save').onclick = () => {
+            axios({
+                method: 'post', 
+                url: '/api/genshins', 
+                data: {
+                    icon : document.getElementById("icon").value, 
+                    name  : document.getElementById("name").value,
+                    weapontype : document.getElementById("weapontype").value,
+                    base : document.getElementById("base").value,
+                    substat : document.getElementById("substat").value
+                }
+            }).then((result) => {
+
+                if (document.getElementById("icon").value.trim() == "" ||document.getElementById("name").value.trim() == "" ||document.getElementById("base").value.trim() == "" || document.getElementById("substat").value.trim() == "" ||document.getElementById("weapontype").value.trim() == "") {
+                    alert('Info status: Item Weapon yang diinput TIDAK VALID')
+                }
+                else {
+                    alert('Info status: Item Weapon sukses ditambahkan pada tanggal '+ date)
+                }
+                window.location = "/";
+            }).catch((err) => {
+                alert('error ' + err)
+            });
+        }
+    </script>
+</body>
+</html>

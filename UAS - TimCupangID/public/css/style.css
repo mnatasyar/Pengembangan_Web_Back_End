@@ -1,0 +1,300 @@
+html{
+    background-image: url(../img/bg.jpg);
+}
+:root {
+    --dark-color-a: #667aff7c;
+    --dark-color-b: #7386ff71;
+    --light-color: #e6e9ff;
+    --success-color: #5cb85c;
+    --error-color: #d9534f;
+    --primary: #b6895b;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-size: 16px;
+    /*background: var(--light-color);*/
+    /* background-image: url("../images/rename.jpg"); */
+    font-family: "Franklin Gothic Light", "Arial Narrow", Arial, sans-serif;
+    height: 200%;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin: 20px;
+}
+
+ul {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.4rem 7%;
+    background-color: white;
+    border-bottom: 1px solid var(--primary);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 9999;
+}
+  
+.navbar .navbar-logo {
+    font-size: 2rem;
+    font-weight: 700;
+    color: rgb(0, 0, 0);
+    font-style: italic;
+}
+  
+.navbar .navbar-logo span {
+    color: var(--primary);
+}
+  
+.navbar .navbar-nav a {
+    color: rgb(0, 0, 0);
+    display: inline-block;
+    font-size: 1, 4rem;
+    margin: 0 1rem;
+}
+  
+.navbar .navbar-nav a:hover {
+    color: var(--primary);
+}
+  
+.navbar .navbar-nav a::after {
+    content: "";
+    display: block;
+    padding-bottom: 0.5rem;
+    border-bottom: 0.5rem solid var(--primary);
+    transform: scale(0);
+    transition: 0.2s linear;
+}
+  
+.navbar .navbar-nav a:hover::after {
+    transform: scaleX(1);
+}
+  
+.navbar .navbar-extra a {
+    color: rgb(0, 0, 0);
+    margin: 0 0.5rem;
+}
+  
+.navbar .navbar-extra a:hover {
+    color: var(--primary);
+}
+
+.btn {
+    cursor: pointer;
+    padding: 5px 20px;
+    background: #de1414;
+    color: white;
+    border: 0;
+    font-size: 17px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    border-radius: 10%;
+}
+
+@media (max-width: 768px) {
+    html {
+      font-size: 62.5%;
+    }
+  
+    #hamburger-menu {
+      display: inline-block;
+    }
+  
+    .navbar .navbar-nav {
+      position: absolute;
+      top: 100%;
+      right: -100%;
+      background-color: #fff;
+      width: 30rem;
+      height: 100vh;
+      transition: 0.3s;
+    }
+  
+    .navbar .navbar-nav.active {
+      right: 0;
+    }
+  
+    .navbar .navbar-nav a {
+      color: var(--bg);
+      display: block;
+      margin: 1.5rem;
+      padding: 0.5rem;
+      font-size: 2rem;
+    }
+  
+    .navbar .navbar-nav a::after {
+      transform-origin: 0 0;
+    }
+  
+    .navbar .navbar-nav a:hover::after {
+      transform: scaleX(0.2);
+    }
+  }
+
+/* Chat Page */
+.chat-container {
+    max-width: 100%;
+    height: 100%  ;
+    margin: 100px auto;
+    background: rgba(255, 255, 255, 0.507);
+    overflow: hidden;
+}
+
+.chat-header {
+    background: var(--dark-color-a);
+    color: #fff;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.chat-main {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+}
+
+.chat-sidebar {
+    background: var(--dark-color-b);
+    color: #fff;
+    padding: 20px 20px 60px;
+    overflow-y: scroll;
+}
+
+.chat-sidebar h2 {
+    font-size: 20px;
+    background: rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+.chat-sidebar h3 {
+    margin-bottom: 15px;
+}
+
+.chat-sidebar ul li {
+    padding: 10px 0;
+}
+
+.chat-messages {
+    padding: 30px;
+    max-height: 500px;
+    overflow-y: scroll;
+    border-style:inset;
+    background:#d6e4d635;
+}
+
+.chat-messages .message {
+    padding: 10px;
+    margin-bottom: 15px;
+    background-color: var(--light-color);
+    border-radius: 5px;
+}
+
+.chat-messages .message .meta {
+    font-size: 15px;
+    font-weight: bold;
+    color: black;
+    opacity: 0.7;
+    margin-bottom: 7px;
+}
+
+.chat-messages .message .meta span {
+    color: rgba(119, 119, 119, 0.171);
+}
+
+.chat-form-container {
+    padding: 20px 30px;
+    background-color: var(--dark-color-a);
+    
+}
+
+.chat-form-container form {
+    display: flex;
+}
+
+.chat-form-container input[type='text'] {
+    font-size: 16px;
+    padding: 5px;
+    height: 40px;
+    flex: 1;
+}
+
+/* Join Page */
+.join-container {
+    max-width: 500px;
+    margin: 120px auto;
+    color: #fff;
+    border: 2px solid #7d93db;
+}
+
+.join-header {
+    text-align: center;
+    padding: 20px;
+    background: var(--dark-color-a);
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.join-main {
+    padding: 30px 40px;
+    background: var(--dark-color-b);
+}
+
+.join-main p {
+    margin-bottom: 20px;
+}
+
+.join-main .form-control {
+    margin-bottom: 20px;
+}
+
+.join-main label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.join-main input[type='text'] {
+    font-size: 16px;
+    padding: 5px;
+    height: 40px;
+    width: 100%;
+}
+
+.join-main select {
+    font-size: 16px;
+    padding: 5px;
+    height: 40px;
+    width: 100%;
+}
+
+.join-main .btn {
+    margin-top: 20px;
+    width: 100%;
+}
+
+@media (max-width: 700px) {
+    .chat-main {
+        display: block;
+    }
+
+    .chat-sidebar {
+        display: none;
+    }
+}
