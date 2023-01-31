@@ -1,0 +1,2 @@
+apabila file db_genshin.sql error pada saat peng import an di xampp mysql,
+maka kita dapat membuat database baru dengan nama "db_genshin" lalu mengimport tabel genshins.sql saja
